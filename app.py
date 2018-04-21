@@ -68,7 +68,7 @@ def categories():
 
         print("income: ", income)
 
-        return render_template('categories.html',spendingform=spendingform)
+        return redirect(url_for('dashboard'))
 
     return render_template('categories.html',spendingform=spendingform)
 
