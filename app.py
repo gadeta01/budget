@@ -14,9 +14,16 @@ def home():
     #depending on session could return something different
     return render_template('login.html')
 
-@app.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')
+
+@app.route('/dashboard')  
+def dashboard():        
+    #TODO get categories from database      
+    categories = []
+    rent = {"name": "Rent", "balance": 700, "per_month":700}
+    categories.append(rent)
+    groceries = {"name": "Groceries", "balance": 40, "per_month":120}
+    categories.append(groceries)
+    return render_template('dashboard.html', categories=categories)
 
 @app.route('/transactions')
 def transactions():
