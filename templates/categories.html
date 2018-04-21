@@ -4,6 +4,12 @@
 {% endblock %}
 
 {% block content %}
-<h3>Create and Edit Categories on this page</h3>
+{% for category in categories %}
+<tr class="warning">
+     <td>{{ category.name }}</td>
+     <td>{{ category.balance }}</td>
+     <td>{{ category.per_month }}</td>
+ </tr>
+ {% endfor %}
 
 {% endblock %}
