@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, redirect, url_for
 from flask import request
 from flask_wtf import Form
 from wtforms import StringField,ValidationError, SelectField, TextAreaField, FloatField
@@ -14,6 +14,19 @@ def home():
     #depending on session could return something different
     return render_template('login.html')
 
+@app.route('/login', methods=['GET','POST'])
+def login():
+    if request.method == 'POST':
+        email = request.form['username']
+        password = request.form['password']
+        token = dblogin(email, password)
+        if token != ('Error: Invalid Userid or Password', 400):
+            return redirect(url_for('dashboard'))
+        else:
+            error = 'Incorrect password'
+        return render_template('login.html', error=error)
+
+    return redirect(url_for('dashboard'))
 
 @app.route('/dashboard')  
 def dashboard():        
@@ -63,8 +76,6 @@ def categories():
 def fillbudget():
     return render_template('fillbudget.html')
 
-#in app.py
-
 class SpendingForm(Form):
     income = FloatField('', validators=[Optional()])
     entertainment = FloatField('', validators=[Optional()])
@@ -82,6 +93,10 @@ class SpendingForm(Form):
     fees_charges = FloatField('', validators=[Optional()])
     business_services = FloatField('', validators=[Optional()])
     taxes = FloatField('', validators=[Optional()])
+
+def dblogin(email, password):
+    #TODO implement login
+    return ("success")
 
 
 if __name__ == '__main__':

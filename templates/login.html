@@ -4,6 +4,23 @@
 {% endblock %}
 
 {% block content %}
-<h3>Login Page</h3>
+<link rel=stylesheet href="static/login.css" type"text/css"/>
+<div class="container">
+
+    <form class="form-signin" action="/login" method="post">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" name="username" class="form-control" placeholder="Email address" value="{{
+        request.form.username }}" required autofocus >
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" name="password" class="form-control" placeholder="Password" value="{{
+        request.form.password }}" required>
+        {% if error %}
+            <p class="error"><strong>Error:</strong> {{ error }}
+        {% endif %}
+        <button class="btn btn-lg btn-primary btn-block" value="Submit">Sign in</button>
+    </form>
+  
+</div> <!-- /container -->
 
 {% endblock %}
