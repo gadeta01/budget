@@ -1,3 +1,11 @@
+
+.center {
+    margin: auto;
+    width: 50%;
+    border: 3px solid green;
+    padding: 10px;
+}
+
 html, body {
     /*background: linear-gradient(to bottom left, #80cde5 0%, #33cc33 100%);*/
     background: linear-gradient(to bottom, #e0f0d9 0%, #377bb5 100%);
