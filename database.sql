@@ -4,6 +4,10 @@ CREATE TABLE public."User" (
     id integer NOT NULL DEFAULT NEXTVAL('user_id_seq'),
     LastName varchar(255),
     FirstName varchar(255),
+    email character varying(120),
+    password character varying(512) NOT NULL,
+    token character varying(512),
+    validated boolean,
     CONSTRAINT "user_pkey"  PRIMARY KEY (id)
 );
 
