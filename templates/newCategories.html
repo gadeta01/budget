@@ -1,0 +1,19 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "layout.html" %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+
+<div class = "col-sm-3 text-center">
+    <div class="panel panel-info">
+        <div class="panel-body">
+            Category Name {{ render_field(addCategoryForm.categoryName) }}
+            Starting Amount {{ render_field(addCategoryForm.categoryAmount) }}
+        </div>
+        <button type="submit" class="btn btn-small btn-primary">Add Category</button>
+    </div>
+</div>
+
+{% endblock %}

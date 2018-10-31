@@ -10,6 +10,8 @@ from wtforms import StringField,ValidationError, SelectField, TextAreaField, Flo
 from wtforms.widgets import TextArea
 from wtforms.validators import InputRequired, Optional
 
+from addCategory import AddCategory
+
 app = Flask(__name__)
 app.debug = True
 app.secret_key="supersecretkey"
@@ -63,7 +65,8 @@ def check_password(plain_text_password, hashed_password):
 def home():
     #depending on session could return something different
 
-    return render_template('login.html')
+    #return render_template('dashboard.html')
+    return dashboard() 
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -92,6 +95,13 @@ def dashboard():
 @app.route('/transactions')
 def transactions():
     return render_template('transactions.html')
+    
+@app.route('/newCategories', methods=['GET','POST'])
+def newCategories():
+    addCategories = AddCategory()
+
+    return render_template('newCategories.html', addCategoryForm=addCategories)
+
 
 @app.route('/categories', methods=['GET','POST'])
 def categories():
